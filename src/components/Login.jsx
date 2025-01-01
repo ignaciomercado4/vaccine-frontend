@@ -23,7 +23,7 @@ function handleLogin() {
       });
 }
 
-const Login = () => {
+function Login() {
     return(
         <div>
             <form id="form">

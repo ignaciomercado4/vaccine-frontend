@@ -1,4 +1,4 @@
-const Vaccinations = () => {
+function Vaccinations() {
     return(
         <div>
             Vaccinations ("/vaccinations")

@@ -15,7 +15,7 @@ async function handleSignup() {
         })
 }
 
-const Signup = () => {
+function Signup () {
     return(
         <div>
             <form>
