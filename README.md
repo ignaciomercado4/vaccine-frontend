@@ -5,4 +5,4 @@ My vaccine/medicine management API's frontend was created using React.js, React 
 You can find the API code [here](https://github.com/ignaciomercado4/vaccine-api/). Made in Go, Gin, GORM and PostgreSQL.
 
 ### Contact
-You can contact me at [LinkedIn](https://linkedin.com/in/ignacio-mercado) or via Email at igmercado46@gmail.com
+You can contact me at [LinkedIn](https://linkedin.com/in/ignacio-mercado) or via Email at igmercado46@gmail.com.
