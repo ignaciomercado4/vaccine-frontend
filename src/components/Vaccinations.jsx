@@ -22,11 +22,24 @@ function Vaccinations() {
         }
     };
 
-    return(
+    return (
         <div>
-            {JSON.stringify(data)}
+            {data.vaccinations ? (
+                data.vaccinations.map((vacc, index) => (
+                    <li key={index}>
+                        <strong>Name:</strong> {vacc.name} <br />
+                        <strong>Drug ID:</strong> {vacc.drugId} <br />
+                        <strong>Dose:</strong> {vacc.dose} <br />
+                        <strong>Date:</strong> {new Date(vacc.date).toLocaleDateString()} <br />
+                        <strong>Creation date:</strong> {new Date(vacc.CreatedAt).toLocaleDateString()} <br />
+                        <strong>Last modification:</strong> {new Date(vacc.UpdatedAt).toLocaleDateString()}
+                    </li>
+                ))
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
     );
 }
 
-export default Vaccinations
+export default Vaccinations;
