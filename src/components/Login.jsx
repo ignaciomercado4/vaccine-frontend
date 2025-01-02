@@ -9,8 +9,7 @@ function handleLogin() {
     password: $inputs[2].value,
   };
 
-  axios
-    .post("http://localhost:8080/api/login", data, {
+  axios.post("http://localhost:8080/api/login", data, {
       headers: { "Content-Type": "application/json" },
     })
     .then(function (response) {
