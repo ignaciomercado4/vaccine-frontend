@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 async function handleSignup() {
@@ -22,9 +23,7 @@ function Signup() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-[#474E93] to-[#7E5CAD] text-white">
       <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-[#474E93]">
-          Sign Up
-        </h2>
+        <h2 className="text-2xl font-bold text-center text-[#474E93]">Sign Up</h2>
         <form id="form" className="space-y-4 mt-4">
           <div>
             <label
@@ -73,6 +72,15 @@ function Signup() {
             Sign up
           </button>
         </form>
+        <p className="text-center mt-4 text-sm text-gray-600">
+          Log in{" "}
+          <Link
+            to="/login"
+            className="text-[#7E5CAD] hover:text-[#72BAA9] font-medium"
+          >
+            here.
+          </Link>
+        </p>
       </div>
     </div>
   );
