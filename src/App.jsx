@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Home from "./components/Home"
-import Drugs from "./components/Drugs"
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import Vaccinations from "./components/Vaccinations";
+import Drugs from "./components/drugs/Drugs"
+import Signup from "./components/users/Signup";
+import Login from "./components/users/Login";
+import Vaccinations from "./components/vaccinations/Vaccinations";
 import { verifySession } from "./utils/auth";
 
 function App() {
