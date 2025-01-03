@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
     const isAuthPage =
-        window.location.pathname === "/login" || window.location.pathname === "/signup";
+        window.location.pathname === "/login" || window.location.pathname === "/signup" || sessionStorage.getItem("jwtToken") === "";
 
     return (
         <nav className="bg-[#474E93] p-4 shadow-lg">
