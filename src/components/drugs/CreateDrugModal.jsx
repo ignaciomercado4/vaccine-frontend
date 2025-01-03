@@ -1,4 +1,15 @@
-async function handleSubmit() {
+function handleSubmit() {
+    const $CREATE_DRUG_FORM = document.querySelector("#create-drug-form");
+    
+    let data = {
+        "name": $CREATE_DRUG_FORM.name.value,
+        "approved": $CREATE_DRUG_FORM.approved.value ? true : false,
+        "minDose": parseInt($CREATE_DRUG_FORM.minDose.value),
+        "maxDose": parseInt($CREATE_DRUG_FORM.maxDose.value),
+        "availableAt": $CREATE_DRUG_FORM.availableAt.value
+    };
+
+    console.log(data)
 }
 
 function CreateDrugModal() {
@@ -16,7 +27,7 @@ function CreateDrugModal() {
                         name="name"
                         id="name"
                         className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        placeholder="Enter drug name"
+                        required placeholder="Enter drug name"
                     />
                 </div>
 
@@ -28,9 +39,10 @@ function CreateDrugModal() {
                     <select
                         name="approved"
                         id="approved"
+                        required
                         className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     >
-                        <option value="false">No</option>
+                        <option value="">No</option>
                         <option value="true">Yes</option>
                     </select>
                 </div>
@@ -45,7 +57,7 @@ function CreateDrugModal() {
                         name="minDose"
                         id="minDose"
                         className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        placeholder="Enter minimum dose"
+                        required placeholder="Enter minimum dose"
                     />
                 </div>
 
@@ -59,7 +71,7 @@ function CreateDrugModal() {
                         name="maxDose"
                         id="maxDose"
                         className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        placeholder="Enter maximum dose"
+                        required placeholder="Enter maximum dose"
                     />
                 </div>
 
@@ -72,6 +84,7 @@ function CreateDrugModal() {
                         type="date"
                         name="availableAt"
                         id="availableAt"
+                        required
                         className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                 </div>
@@ -79,8 +92,9 @@ function CreateDrugModal() {
                 {/* submit button */}
                 <div className="text-right">
                     <button
-                        type="submit"
+                        type="button"
                         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        onClick={handleSubmit}
                     >
                         Save Drug
                     </button>
