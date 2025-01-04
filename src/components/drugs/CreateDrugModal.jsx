@@ -1,3 +1,5 @@
+import axios from "axios";
+
 function handleSubmit() {
     const $CREATE_DRUG_FORM = document.querySelector("#create-drug-form");
     
@@ -6,10 +8,20 @@ function handleSubmit() {
         "approved": $CREATE_DRUG_FORM.approved.value ? true : false,
         "minDose": parseInt($CREATE_DRUG_FORM.minDose.value),
         "maxDose": parseInt($CREATE_DRUG_FORM.maxDose.value),
-        "availableAt": $CREATE_DRUG_FORM.availableAt.value
+        "availableAt": new Date($CREATE_DRUG_FORM.availableAt.value).toISOString()
     };
 
-    console.log(data)
+    try {
+        axios.post('http://localhost:8080/api/drugs', data, {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${sessionStorage.getItem("jwtToken")}`
+            }
+        });
+        location.reload();
+    } catch (error) {
+        console.error('Error posting data:', error);
+    }
 }
 
 function CreateDrugModal() {
