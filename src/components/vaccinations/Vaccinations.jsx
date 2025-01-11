@@ -69,13 +69,13 @@ function Vaccinations() {
                  >
                      <h2 className="text-xl font-semibold text-gray-700 mb-2">{vacc.name}</h2>
                      <p className="text-sm text-gray-600 mb-1">
-                         <strong>Approved:</strong> {vacc.drugId}
+                         <strong>Drug Id:</strong> {vacc.drugId}
                      </p>
                      <p className="text-sm text-gray-600 mb-1">
-                         <strong>Min Dose:</strong> {vacc.dose}
+                         <strong>Dose:</strong> {vacc.dose}
                      </p>
                      <p className="text-sm text-gray-600 mb-1">
-                         <strong>Max Dose:</strong> {vacc.date}
+                         <strong>Date:</strong> {new Date(vacc.date).toLocaleDateString()}
                      </p>
                      <p className="text-sm text-gray-600 mb-1">
                          <strong>Created at:</strong> {new Date(vacc.CreatedAt).toLocaleDateString()}

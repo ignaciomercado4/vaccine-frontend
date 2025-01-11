@@ -1,4 +1,6 @@
 import axios from "axios";
+import { useState, useEffect } from "react";
+
 function handleSubmit() {
     const $CREATE_VACCINATION_FORM = document.querySelector("#create-vaccination-form");
 
@@ -11,19 +13,41 @@ function handleSubmit() {
 
 
     try {
-        axios.post('http://localhost:8080/api/vaccinations', data, {
+        axios.post('http://localhost:8080/api/vaccination', data, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${sessionStorage.getItem("jwtToken")}`
             }
-        });
-        location.reload();
+        })
+        .then(location.reload());
     } catch (error) {
         console.error('Error posting data:', error);
     }
 }
 
 function CreateVaccinationModal() {
+    
+    const [drugsData, setDrugsData] = useState({}); 
+    
+    useEffect(() => {
+        fetchDrugsData();
+    }, []);
+
+    const fetchDrugsData = async () => {
+        try {
+            const result = await axios.get('http://localhost:8080/api/drugs', {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${sessionStorage.getItem("jwtToken")}`
+                }
+            });
+
+            setDrugsData(result.data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
     return (
         <div className="p-6">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Create New Vaccination</h2>
@@ -56,6 +80,22 @@ function CreateVaccinationModal() {
                     />
                 </div>
 
+                {/* drug id */}
+                <div>
+                    <label htmlFor="dose" className="block text-gray-700 font-semibold mb-2">
+                        Drug Id
+                    </label>
+                    <select name="drugId" 
+                    id="drugId" 
+                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        >
+                        {drugsData.drugs && drugsData.drugs.map((drug, index) => {
+                            return(
+                                <option value={drug.ID} key={index}>{drug.name} - ID {drug.ID}</option>
+                            )
+                            })}
+                    </select>
+                </div>
                
                 {/* date */}
                 <div>
